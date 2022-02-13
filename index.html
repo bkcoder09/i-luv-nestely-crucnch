@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title> Ping Pong but Different </title>
+        <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>
+    </head>
+    <body background="Wallpaper.jpg">
+        <center>
+            <h2 class="btn-warning"> PING PONG 
+            <button type="button" class="btn btn-warning" data-toggle="display" data-target="#myModal"> Instuctions </button>
+            </h2>
+            <br>
+            <button type="button" onclick="start()" class="btn lol"> Play Game </button>
+            <br>
+            <br>
+            <button type="button" class="btn" id="oop"> Status - Loading </button>
+
+            <div id="instructions"></div>
+            <div id="candle"></div>
+        </center>
+    </body>
+</html>
+
+<style>
+
+    body{
+        background-size:cover;
+    }
+
+    h2{
+        width:100%;
+        margin-top:0;
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+
+    #oop{
+        background-color:rgb(0, 107, 110);
+        color:white;
+    }
+
+    .lol{
+        background-color:plum;
+        color:white;
+    }
+
+    .btn{
+        font-size:18px;
+    }
+
+    canvas{
+        border-radius:10px;
+        border-style:solid;
+        border-width:1px;
+        border-color:white;
+    }
+</style>
