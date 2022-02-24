@@ -3,6 +3,7 @@
 rightX = "";
 rightY = "";
 wrist_score = "";
+game_status = "";
 
 var paddle2 =10,paddle1=10;
 
@@ -41,34 +42,43 @@ function modelLoaded(){
   console.log(" The Candle is Loaded XD ");
 }
 
-function gotResult(results){
- if(results.length > 0){
-   rightX = results[0].pose.rightWrist.x;
-   rightY = results[0].pose.rightWrist.y;
-   wrist_score = results[0].score;
-  }
+function gotPoses(results){
+  if(results.length > 0){
+    rightX = results[0].pose.rightWrist.x;
+    rightY = results[0].pose.rightWrist.y;
+    wrist_score = results[0].pose.keypoints[10].score;
+    console.log(wrist_score);
+   }
 }
 
-function gotPoses(results){
+function start(){
+  game_status = "start";
+  document.getElementById("oop").innerHTML = " Status - Loaded :D ";
+
 }
 
 function draw(){
+  if(game_status == "start"){}
+ background(0);
  image(video, 0, 0, 650, 575);
+ fill("black");
+ stroke("black");
+ rect(680,0,20,700);
+
+ fill("black");
+ stroke("white");
+ rect(0,0,20,700);
+ 
 
  if(wrist_score > 0.2){
    fill("#ee99ff");
    stroke("#004e8a");
    circle(rightX, rightY, 20);
  }
-
- fill("black");
- stroke("black");
- rect(680,0,20,700);
-
- fill("black");
- stroke("black");
- rect(0,0,20,700);
  
+ if(game_status == "start"){
+   document.getElementById("oop").innerHTML = " Status - Game is Loaded XD ";
+
    //funtion paddleInCanvas call 
    paddleInCanvas();
  
@@ -96,6 +106,7 @@ function draw(){
    
    //function move call which in very important
     move();
+ }
 }
 
 //function reset when ball does notcame in the contact of padde
@@ -189,4 +200,9 @@ function paddleInCanvas(){
   if(mouseY < 0){
     mouseY =0;
   }  
+}
+
+function restart(){
+  pcscore = 0;
+  loop();
 }
