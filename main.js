@@ -1,5 +1,4 @@
 /*created by prashant shukla */
-
 rightX = "";
 rightY = "";
 wrist_score = "";
@@ -23,6 +22,11 @@ var ball = {
     r:20,
     dx:3,
     dy:3
+}
+
+function preload(){
+  point = loadSound('ball_touch_paddel.wav');
+  miss = loadSound('missed.wav');
 }
 
 function setup(){
@@ -58,9 +62,7 @@ function start(){
 }
 
 function draw(){
-  if(game_status == "start"){}
  background(0);
- image(video, 0, 0, 650, 575);
  fill("black");
  stroke("black");
  rect(680,0,20,700);
