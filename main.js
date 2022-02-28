@@ -1,6 +1,6 @@
 /*created by prashant shukla */
-rightX = "";
 rightY = "";
+rightX = "";
 wrist_score = "";
 game_status = "";
 
@@ -34,7 +34,7 @@ function setup(){
   canvas.parent('candle');
 
   video = createCapture(VIDEO);
-  video.size(650, 575);
+  video.size(610, 575);
   video.hide();
 
   poseNet = ml5.poseNet(video, modelLoaded);
@@ -63,13 +63,14 @@ function start(){
 
 function draw(){
  background(0);
+ image(video, 0, 0, 650, 575);
  fill("black");
- stroke("black");
- rect(680,0,20,700);
+ stroke("white");
+ rect(630,0,20,575);
 
  fill("black");
  stroke("white");
- rect(0,0,20,700);
+ rect(0,0,20,575);
  
 
  if(wrist_score > 0.2){
@@ -88,7 +89,7 @@ function draw(){
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
+   paddle1Y = rightY; 
    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
    
@@ -100,7 +101,7 @@ function draw(){
     //function midline call
     midline();
     
-    //funtion drawScore call 
+    //function drawScore call 
    drawScore();
    
    //function models call  
@@ -157,6 +158,7 @@ function move(){
    }
   if (ball.x-2.5*ball.r/2< 0){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
+    point.play();
     ball.dx = -ball.dx+0.5; 
   }
   else{
@@ -173,7 +175,7 @@ if(pcscore ==4){
     stroke("white");
     textSize(25)
     text("Game Over!☹☹",width/2,height/2);
-    text("Reload The Page!",width/2,height/2+30)
+    text("Press Restart To Play Again!",width/2,height/2+30)
     noLoop();
     pcscore = 0;
 }
@@ -206,5 +208,6 @@ function paddleInCanvas(){
 
 function restart(){
   pcscore = 0;
+  playerscore = 0;
   loop();
 }
